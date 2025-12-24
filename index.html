@@ -1,0 +1,164 @@
+index.htmlbash -c 'set -e
+mkdir -p muratgpt && cd muratgpt
+cat > index.html << "EOF"
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MuratGPT – Yasak yok, sahne Murat’ın</title>
+  <meta name="description" content="MuratGPT: Murat’ın remix zekası. Kulüp punchline, mobil intro ve sahne akışları.">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root{--mblue:#1779FF;--dark:#0B1A2D;--card:#0F2340;--pink:#FF3D5B;}
+    .glitch{ text-shadow:-1px 0 var(--pink),1px 0 var(--mblue); }
+  </style>
+</head>
+<body class="bg-[color:var(--dark)] text-white">
+  <header class="px-4 py-4 flex items-center justify-between">
+    <div class="font-bold text-xl">MuratGPT</div>
+    <nav class="hidden sm:flex gap-6 text-sm opacity-80">
+      <a href="/demo.html">Demo</a><a href="/kulup.html">Kulüp</a><a href="/brand.html">Brand</a><a href="/contact.html">İletişim</a>
+    </nav>
+  </header>
+
+  <main class="px-4">
+    <section class="mt-8 sm:mt-16">
+      <h1 class="text-4xl sm:text-6xl font-extrabold glitch">Yasak yok, sahne Murat’ın.</h1>
+      <p class="mt-4 max-w-xl opacity-90">MuratGPT: Kulüp punchline’larını, MuratOS ikonlarını ve mobil intro sahnelerini anında remixler.</p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a class="inline-block bg-[color:var(--mblue)] hover:bg-[#0f5fd1] px-6 py-3 rounded-md font-semibold" href="/demo.html">Demosu izle</a>
+        <a class="inline-block border border-[color:var(--mblue)] px-6 py-3 rounded-md font-semibold" href="/kulup.html">Kulübe katıl</a>
+      </div>
+    </section>
+
+    <section class="mt-12 grid sm:grid-cols-3 gap-6">
+      <div class="p-5 rounded-lg bg-[color:var(--card)]">
+        <h3 class="font-semibold">Remix zekası</h3>
+        <p class="mt-2 opacity-85">Punchline, ikon, intro: sahneye göre otomatik akış.</p>
+      </div>
+      <div class="p-5 rounded-lg bg-[color:var(--card)]">
+        <h3 class="font-semibold">Hızlı sahne</h3>
+        <p class="mt-2 opacity-85">3 sn intro, 30 sn landing. Mobil-dikey optimizasyon.</p>
+      </div>
+      <div class="p-5 rounded-lg bg-[color:var(--card)]">
+        <h3 class="font-semibold">Aile dostu</h3>
+        <p class="mt-2 opacity-85">Temiz dil, net kurallar, güçlü vibe.</p>
+      </div>
+    </section>
+
+    <section class="mt-12 p-6 rounded-lg bg-[color:var(--card)]">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h4 class="font-bold">MURATLAR Kulübü</h4>
+          <p class="opacity-80">Etiket: #2LUVQQRLP • Kupa: 2759 • Katılım: Açık • Aile Dostu</p>
+          <p class="mt-2 italic opacity-80">“burası benim kulübüm yasak yok”</p>
+        </div>
+        <a class="inline-block bg-[color:var(--pink)] hover:bg-[#e3344e] px-5 py-3 rounded-md font-semibold" href="/kulup.html">Davet Gönder</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 px-4 py-8 text-xs opacity-70">
+    © 2025 MuratGPT • Murat Demir • vibe: remix
+  </footer>
+</body>
+</html>
+EOF
+
+cat > demo.html << "EOF"
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MuratGPT Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-[#0B1A2D] text-white px-4 py-6">
+  <h1 class="text-2xl font-bold">MuratGPT Demo</h1>
+  <p class="mt-2 opacity-80">Prompt yaz, Murat vibe’ında mock cevap gör.</p>
+  <form class="mt-4" onsubmit="event.preventDefault();showReply();">
+    <input id="q" class="w-full p-3 rounded bg-[#0F2340]" placeholder="Örn: Kulüp intro punchline yaz">
+    <button class="mt-3 bg-[#1779FF] px-4 py-2 rounded font-semibold">Üret</button>
+  </form>
+  <div id="a" class="mt-6 p-4 rounded bg-[#0F2340] hidden"></div>
+  <script>
+    function showReply(){
+      const q = document.getElementById("q").value.trim();
+      const a = document.getElementById("a");
+      const base = "Başkanlık enerjisi %100. Yasak yok, çünkü sahne Murat’ın.";
+      a.textContent = q ? base + " • Remix: " + q : base;
+      a.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
+EOF
+
+cat > kulup.html << "EOF"
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MURATLAR Kulübü</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-[#0B1A2D] text-white px-4 py-6">
+  <h1 class="text-2xl font-bold">MURATLAR Kulübü</h1>
+  <p class="mt-2 opacity-80">Etiket: #2LUVQQRLP • Kupa: 2759 • Katılım: Açık • Aile Dostu</p>
+  <p class="mt-2 italic opacity-80">“burası benim kulübüm yasak yok”</p>
+  <div class="mt-6 p-6 rounded bg-[#0F2340]">
+    <h2 class="font-semibold">Davetiye</h2>
+    <p class="mt-2 opacity-85">Arkadaşlarını davet etmek için etiketi paylaş: <span class="font-mono">#2LUVQQRLP</span></p>
+    <a href="index.html" class="mt-4 inline-block bg-[#1779FF] px-5 py-3 rounded font-semibold">Ana sayfaya dön</a>
+  </div>
+</body>
+</html>
+EOF
+
+cat > brand.html << "EOF"
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Brand Kit • MuratGPT</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-[#0B1A2D] text-white px-4 py-6">
+  <h1 class="text-2xl font-bold">Brand Kit</h1>
+  <ul class="mt-4 space-y-2">
+    <li><span class="font-semibold">Renkler:</span> #1779FF, #0B1A2D, #0F2340, #FF3D5B</li>
+    <li><span class="font-semibold">Font:</span> Sistem fontları (Inter önerilir)</li>
+    <li><span class="font-semibold">Vibe:</span> Glitch-remix, temiz ve aile dostu</li>
+  </ul>
+  <a href="index.html" class="mt-6 inline-block bg-[#1779FF] px-5 py-3 rounded font-semibold">Ana sayfa</a>
+</body>
+</html>
+EOF
+
+cat > contact.html << "EOF"
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>İletişim • MuratGPT</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-[#0B1A2D] text-white px-4 py-6">
+  <h1 class="text-2xl font-bold">İletişim</h1>
+  <p class="mt-2 opacity-80">E-posta: <span class="font-mono">murat@muratorg</span> (örnek)</p>
+  <a href="index.html" class="mt-6 inline-block bg-[#1779FF] px-5 py-3 rounded font-semibold">Ana sayfa</a>
+</body>
+</html>
+EOF
+
+python3 - << "EOF"
+import http.server, socketserver, webbrowser
+PORT=8080
+handler = http.server.SimpleHTTPRequestHandler
+with socketserver.TCPServer(("", PORT), handler) as httpd:
+    webbrowser.open(f"http://localhost:{PORT}/index.html")
+    print("MuratGPT lokal sunucu:", f"http://localhost:{PORT}/")
+    try: httpd.serve_forever()
+    except KeyboardInterrupt: pass
+EOF
+'
